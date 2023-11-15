@@ -75,6 +75,7 @@
       var li = document.createElement('li');
       li.innerHTML = `
         <span>${taskText}</span>
+        <button onclick="editTask(this)">Editar</button>
         <button onclick="removeTask(this)">Remover</button>
       `;
       tasksList.appendChild(li);
@@ -86,7 +87,18 @@
       var tasksList = document.getElementById('tasksList');
       tasksList.removeChild(li);
     }
+
+    function editTask(button) {
+      var li = button.parentElement;
+      var span = li.querySelector('span');
+      var newTaskText = prompt('Editar tarefa:', span.textContent);
+
+      if (newTaskText !== null) {
+        span.textContent = newTaskText;
+      }
+    }
   </script>
 
 </body>
 </html>
+
